@@ -8,7 +8,47 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <title>Login</title>
 </head>
-<body>
+<body class="bg-gray-200">
+<nav class="bg-white p-6 flex justify-between mb-6">
+
+    <ul class="flex item-center">
+        <li>
+            <a class="p-3" href="{{ route('home') }}">Home</a>
+        </li>
+        <li>
+            <a class="p-3" href="{{ route('dashboard') }}">Dashboard</a>
+        </li>
+        <li>
+            <a class="p-3" href="">Post</a>
+        </li>
+    </ul>
+
+    <ul class="flex item-center">
+        @auth
+        <li>
+            <a class="p-10" href="">{{ auth()->user()->name }}</a>
+        </li>
+
+        <li>
+            <form action="{{ route('logout') }}"  method="post">
+                @csrf
+                <button type="submit" >Logout</button>
+            </form>
+        </li>
+        @endauth
+
+        @guest
+        <li>
+            <a class="p-3"  href="{{ route('login') }}">Login</a>
+        </li>
+        <li>
+            <a class="p-3" href="{{ route('register') }}">Register</a>
+        </li>
+        @endguest
+    </ul>
+</nav>
+
+@yield('content')
 
 </body>
 </html>
