@@ -5,6 +5,8 @@ use \App\Http\Controllers\LoginController;
 use \App\Http\Controllers\Auth\RegisterController;
 use \App\Http\Controllers\DashboardController;
 use \App\Http\Controllers\LogoutController;
+use \App\Http\Controllers\PostController;
+
 
 
 
@@ -26,3 +28,5 @@ Route::post('/logout', [LogoutController::class, 'index'])->name('logout');
 //dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+Route::get('/posts', [PostController::class, 'index'])->name('posts');
+Route::post('/posts', [PostController::class, 'store']);
